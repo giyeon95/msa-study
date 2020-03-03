@@ -1,6 +1,7 @@
 package msa.study.springbootmicroservices.service;
 
 import msa.study.springbootmicroservices.domain.Multiplication;
+import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 
 public interface MultiplicationService {
 
@@ -11,4 +12,9 @@ public interface MultiplicationService {
      */
     Multiplication createRandomMultiplication();
 
+    /**
+     * 계산결과 반환
+     * @return true || false
+     */
+    boolean checkAttempt(final MultiplicationResultAttempt attempt);
 }

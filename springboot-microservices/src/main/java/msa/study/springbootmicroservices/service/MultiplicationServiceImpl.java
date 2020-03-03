@@ -2,6 +2,7 @@ package msa.study.springbootmicroservices.service;
 
 import lombok.AllArgsConstructor;
 import msa.study.springbootmicroservices.domain.Multiplication;
+import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,11 @@ public class MultiplicationServiceImpl implements MultiplicationService {
                 .factorB(factorB)
                 .result(factorA * factorB)
                 .build();
+    }
+
+    @Override
+    public boolean checkAttempt(MultiplicationResultAttempt attempt) {
+        return attempt.getResultAttempt() ==
+                attempt.getMultiplication().getFactorA() * attempt.getMultiplication().getFactorB();
     }
 }

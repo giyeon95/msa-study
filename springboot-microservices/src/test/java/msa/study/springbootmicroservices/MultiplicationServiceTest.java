@@ -1,5 +1,6 @@
 package msa.study.springbootmicroservices;
 
+import msa.study.springbootmicroservices.SpringbootMicroservicesApplication;
 import msa.study.springbootmicroservices.domain.Multiplication;
 import msa.study.springbootmicroservices.service.MultiplicationService;
 import msa.study.springbootmicroservices.service.RandomGeneratorService;
