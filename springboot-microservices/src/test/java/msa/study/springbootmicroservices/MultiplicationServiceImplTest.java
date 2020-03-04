@@ -52,11 +52,25 @@ public class MultiplicationServiceImplTest {
                 .user(user)
                 .multiplication(multiplication)
                 .resultAttempt(3010)
+                .correct(false)
                 .build();
 
         boolean attemptResult = multiplicationService.checkAttempt(attempt);
 
         assertThat(attemptResult).isFalse();
+    }
+
+    @Test
+    public void checkCorrectAttemptTest() {
+        Multiplication multiplication = Multiplication.builder().factorA(50).factorB(60).result(3000).build();
+        User user = User.builder().alias("kiyeon_kim").build();
+
+        MultiplicationResultAttempt attempt = MultiplicationResultAttempt
+                .builder().user(user).multiplication(multiplication).resultAttempt(3000).correct(false).build();
+
+        boolean attemptResult = multiplicationService.checkAttempt(attempt);
+
+        assertThat(attemptResult).isTrue();
 
     }
 }

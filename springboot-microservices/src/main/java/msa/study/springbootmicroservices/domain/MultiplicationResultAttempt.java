@@ -16,9 +16,12 @@ public final class MultiplicationResultAttempt {
     private final Multiplication multiplication;
     private final int resultAttempt;
 
+    private final boolean correct;
+
     protected MultiplicationResultAttempt() {
         user = null;
         multiplication = null;
         resultAttempt = -1;
+        correct = false;
     }
 }
