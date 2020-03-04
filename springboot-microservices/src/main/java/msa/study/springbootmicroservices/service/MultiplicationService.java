@@ -3,6 +3,8 @@ package msa.study.springbootmicroservices.service;
 import msa.study.springbootmicroservices.domain.Multiplication;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 
+import java.util.List;
+
 public interface MultiplicationService {
 
     /**
@@ -17,4 +19,7 @@ public interface MultiplicationService {
      * @return true || false
      */
     boolean checkAttempt(final MultiplicationResultAttempt attempt);
+
+
+    List<MultiplicationResultAttempt> getStatsForUser(String userAlias);
 }

@@ -42,12 +42,7 @@ class MultiplicationControllerTest {
     @Test
     public void getRandomMultiplicationTest() throws Exception {
         given(multiplicationService.createRandomMultiplication())
-                .willReturn(Multiplication.builder()
-                        .factorA(70)
-                        .factorB(20)
-                        .result(1400)
-                        .build()
-                );
+                .willReturn(new Multiplication(70, 20));
 
         MockHttpServletResponse response = mvc.perform(
                 get("/multiplications/random")
@@ -57,15 +52,7 @@ class MultiplicationControllerTest {
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString())
                 .isEqualTo(json.write(
-                        Multiplication
-                                .builder()
-                                .factorA(70)
-                                .factorB(20)
-                                .result(1400)
-                                .build()
-                )
-                        .getJson());
-
+                        new Multiplication(70, 20)).getJson());
 
 
     }

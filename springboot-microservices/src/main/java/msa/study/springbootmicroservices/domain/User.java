@@ -2,15 +2,22 @@ package msa.study.springbootmicroservices.domain;
 
 import lombok.*;
 
-@AllArgsConstructor
-@Builder
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@RequiredArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
+@Entity
 public final class User {
-    private final String alias;
 
-    protected User() {
-        alias = null;
-    }
+    @Id
+    @GeneratedValue
+    @Column(name = "USER_ID")
+    private Long id;
+
+    @NonNull private String alias;
 }
