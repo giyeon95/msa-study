@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode

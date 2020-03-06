@@ -18,9 +18,9 @@ import java.util.Optional;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class MultiplicationServiceImpl implements MultiplicationService {
 
-    private RandomGeneratorService randomGeneratorService;
-    private MultiplicationResultAttemptRepository attemptRepository;
-    private UserRepository userRepository;
+    private final RandomGeneratorService randomGeneratorService;
+    private final MultiplicationResultAttemptRepository attemptRepository;
+    private final UserRepository userRepository;
 
 
     @Override

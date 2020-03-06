@@ -17,7 +17,6 @@ public final class Multiplication {
 
     @Id
     @GeneratedValue
-
     @Column(name = "MULTIPLICATION_ID")
     private Long id;
 
