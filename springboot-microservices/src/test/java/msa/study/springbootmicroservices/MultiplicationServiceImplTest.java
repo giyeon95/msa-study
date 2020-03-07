@@ -4,6 +4,7 @@ package msa.study.springbootmicroservices;
 import msa.study.springbootmicroservices.domain.Multiplication;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import msa.study.springbootmicroservices.domain.User;
+import msa.study.springbootmicroservices.event.EventDispatcher;
 import msa.study.springbootmicroservices.repository.MultiplicationResultAttemptRepository;
 import msa.study.springbootmicroservices.repository.UserRepository;
 import msa.study.springbootmicroservices.service.MultiplicationServiceImpl;
@@ -33,10 +34,13 @@ public class MultiplicationServiceImplTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private EventDispatcher eventDispatcher;
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        multiplicationService = new MultiplicationServiceImpl(randomGeneratorService, attemptRepository, userRepository);
+        multiplicationService = new MultiplicationServiceImpl(randomGeneratorService, attemptRepository, userRepository, eventDispatcher);
     }
 
     @Test

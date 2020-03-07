@@ -13,4 +13,9 @@ spring:
   datasource :
     url: jdbc:h2:file:~/social-multiplication; #Create database to file
 
+multiplication:
+  exchange: multiplication_exchange
+
+  solved:
+    key: multiplication.solved
 

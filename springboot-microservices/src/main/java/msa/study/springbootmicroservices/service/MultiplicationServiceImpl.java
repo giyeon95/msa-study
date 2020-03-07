@@ -1,9 +1,12 @@
 package msa.study.springbootmicroservices.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import msa.study.springbootmicroservices.domain.Multiplication;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import msa.study.springbootmicroservices.domain.User;
+import msa.study.springbootmicroservices.event.EventDispatcher;
+import msa.study.springbootmicroservices.event.MultiplicationSolvedEvent;
 import msa.study.springbootmicroservices.repository.MultiplicationResultAttemptRepository;
 import msa.study.springbootmicroservices.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +18,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MultiplicationServiceImpl implements MultiplicationService {
 
     private final RandomGeneratorService randomGeneratorService;
     private final MultiplicationResultAttemptRepository attemptRepository;
     private final UserRepository userRepository;
-
+    private final EventDispatcher eventDispatcher;
 
     @Override
     public Multiplication createRandomMultiplication() {
@@ -52,6 +55,12 @@ public class MultiplicationServiceImpl implements MultiplicationService {
         );
 
         attemptRepository.save(checkAttempt);
+
+        eventDispatcher.send(new MultiplicationSolvedEvent(
+                checkAttempt.getId(),
+                checkAttempt.getUser().getId(),
+                checkAttempt.isCorrect()));
+
 
         return isCorrect;
     }

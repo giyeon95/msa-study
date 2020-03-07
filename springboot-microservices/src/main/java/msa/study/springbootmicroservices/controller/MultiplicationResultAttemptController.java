@@ -1,7 +1,5 @@
 package msa.study.springbootmicroservices.controller;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import msa.study.springbootmicroservices.service.MultiplicationService;
