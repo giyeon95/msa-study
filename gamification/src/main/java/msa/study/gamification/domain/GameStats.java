@@ -19,7 +19,7 @@ public final class GameStats {
     private final int score;
     private final List<Badge> badges;
 
-    
+
     public GameStats() {
         this.userId = 0L;
         this.score = 0;
