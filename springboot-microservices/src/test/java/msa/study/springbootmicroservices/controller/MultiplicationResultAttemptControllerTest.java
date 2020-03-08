@@ -41,6 +41,7 @@ public class MultiplicationResultAttemptControllerTest {
 
     private JacksonTester<MultiplicationResultAttempt> jsonResultAttempt;
     private JacksonTester<List<MultiplicationResultAttempt>> jsonResultAttemptList;
+    private JacksonTester<Multiplication> jsonMultiplication;
 
     @BeforeEach
     public void setUp() {
@@ -59,7 +60,7 @@ public class MultiplicationResultAttemptControllerTest {
                 .willReturn(recentAttempts);
 
         MockHttpServletResponse response = mvc.perform(get("/results")
-        .param("alias", "kiyeon_kim"))
+                .param("alias", "kiyeon_kim"))
                 .andReturn().getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
@@ -80,8 +81,8 @@ public class MultiplicationResultAttemptControllerTest {
 
     void genericParameterizedTest(final boolean correct) throws Exception {
         given(multiplicationService
-        .checkAttempt(any(MultiplicationResultAttempt.class)))
-        .willReturn(correct);
+                .checkAttempt(any(MultiplicationResultAttempt.class)))
+                .willReturn(correct);
 
         User user = new User("kiyeon_kim");
 
@@ -89,8 +90,8 @@ public class MultiplicationResultAttemptControllerTest {
         MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(user, multiplication, 3500, true);
 
         MockHttpServletResponse response = mvc.perform(MockMvcRequestBuilders.post("/results")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(jsonResult.write(attempt).getJson()))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonResult.write(attempt).getJson()))
                 .andReturn().getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
@@ -104,6 +105,22 @@ public class MultiplicationResultAttemptControllerTest {
                 ).getJson());
 
 
+    }
+
+    @Test
+    public void getResultByIdTest() {
+        User user = new User("kiyeon_kim");
+        Multiplication multiplication = new Multiplication(50, 70);
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                user, multiplication, 3500, true);
+
+//        given(multiplicationService.)
+//
+//        MockHttpServletResponse response = mvc.perform(MockMvcRequestBuilders.get("/" + user.getId())
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .param("resultId", user.getId())
+//
+//
     }
 
 }

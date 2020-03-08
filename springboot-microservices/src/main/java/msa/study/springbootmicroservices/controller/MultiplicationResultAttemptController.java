@@ -1,6 +1,7 @@
 package msa.study.springbootmicroservices.controller;
 
 import lombok.RequiredArgsConstructor;
+import msa.study.springbootmicroservices.domain.Multiplication;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import msa.study.springbootmicroservices.service.MultiplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,10 @@ final class MultiplicationResultAttemptController {
   @GetMapping
   ResponseEntity<List<MultiplicationResultAttempt>> getStatistics(@RequestParam("alias") String alias) {
     return ResponseEntity.ok(multiplicationService.getStatsForUser(alias));
+  }
+
+  @GetMapping("{/resultId}")
+  ResponseEntity<Multiplication> getResultById(final @PathVariable("resultId") Long resultId) {
+    return ResponseEntity.ok(new Multiplication(17, 41));
   }
 }
