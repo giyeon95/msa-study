@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @RequiredArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Getter
 @ToString
 @EqualsAndHashCode
@@ -18,16 +18,14 @@ public final class BadgeCard {
     @Id
     @GeneratedValue
     @Column(name = "BADGE_ID")
-    @NonNull
-    private Long badgeId;
+    private final Long badgeId;
 
-    @NonNull
-    private Long userId;
+    private final Long userId;
 
-    @NonNull
-    private long badgeTimestamp;
-    @NonNull
-    private Badge badge;
+    private final long badgeTimestamp;
+    private final Badge badge;
+
+
 
     public BadgeCard(final Long userId, final Badge badge) {
         this(null, userId, System.currentTimeMillis(), badge);

@@ -1,6 +1,5 @@
 package msa.study.gamification.client;
 
-import lombok.RequiredArgsConstructor;
 import msa.study.gamification.client.dto.MultiplicationResultAttempt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,9 +1,6 @@
 package msa.study.gamification.event;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -11,6 +8,7 @@ import java.io.Serializable;
 @Getter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor(force = true)
 public class MultiplicationSolvedEvent implements Serializable {
     private final Long multiplicationResultAttemptId;
     private final Long userId;

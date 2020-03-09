@@ -1,7 +1,6 @@
 package msa.study.gamification.service;
 
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import msa.study.gamification.domain.LeaderBoardRow;
 import msa.study.gamification.repository.ScoreCardRepository;
@@ -13,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @NoArgsConstructor(force = true)
-public class LeaderBoardServiceImpl implements LeaderBoardService{
+public class LeaderBoardServiceImpl implements LeaderBoardService {
 
     private final ScoreCardRepository scoreCardRepository;
 
