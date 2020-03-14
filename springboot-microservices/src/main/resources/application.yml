@@ -11,7 +11,7 @@ spring:
         show_sql: true #Show SQL in the console
 
   datasource :
-    url: jdbc:h2:file:~/social-multiplication; #Create database to file
+    url: jdbc:h2:file:~/social-multiplication;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVICE=TRUE #Create database to file
 
 multiplication:
   exchange: multiplication_exchange
