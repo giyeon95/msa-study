@@ -17,6 +17,8 @@ zuul:
       path: /stats/**
       url: http://localhost:8081/stats
 
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+
 endpoint:
   trace:
     sensitive: false
@@ -24,3 +26,4 @@ endpoint:
 ribbon:
   eureka:
     enabled: false
+
