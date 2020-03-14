@@ -15,3 +15,8 @@ multiplication:
 
 
 multiplicationHost: http://localhost:8000/api
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
