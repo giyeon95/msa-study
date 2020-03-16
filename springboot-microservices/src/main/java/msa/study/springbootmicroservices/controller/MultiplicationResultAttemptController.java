@@ -1,21 +1,30 @@
 package msa.study.springbootmicroservices.controller;
 
 import lombok.RequiredArgsConstructor;
-import msa.study.springbootmicroservices.domain.Multiplication;
+import lombok.extern.slf4j.Slf4j;
 import msa.study.springbootmicroservices.domain.MultiplicationResultAttempt;
 import msa.study.springbootmicroservices.service.MultiplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Slf4j
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/results")
 final class MultiplicationResultAttemptController {
 
+  @Autowired
   private final MultiplicationService multiplicationService;
+  private final int serverPort;
+
+  public MultiplicationResultAttemptController(@Autowired final MultiplicationService multiplicationService,@Value("${server.port}") int serverPort) {
+    this.multiplicationService = multiplicationService;
+    this.serverPort = serverPort;
+  }
 
 
   @PostMapping
@@ -28,6 +37,7 @@ final class MultiplicationResultAttemptController {
             isCorrect
     );
 
+
     return ResponseEntity.ok(attemptCopy);
   }
 
@@ -38,6 +48,8 @@ final class MultiplicationResultAttemptController {
 
   @GetMapping("/{resultId}")
   ResponseEntity<MultiplicationResultAttempt> getResultById(final @PathVariable("resultId") Long resultId) {
+
+    log.info("조회 결과 {} 를 가져온 서버 @ {}", resultId, serverPort);
     return ResponseEntity.ok(multiplicationService.getResultById(resultId));
   }
 }

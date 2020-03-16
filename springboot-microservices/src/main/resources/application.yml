@@ -11,7 +11,7 @@ spring:
         show_sql: true #Show SQL in the console
 
   datasource :
-    url: jdbc:h2:file:~/social-multiplication;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVICE=TRUE #Create database to file
+    url: jdbc:h2:file:~/social-multiplication;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE #Create database to file
 
 multiplication:
   exchange: multiplication_exchange
@@ -24,3 +24,5 @@ eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka/
+server:
+  port: 8080
